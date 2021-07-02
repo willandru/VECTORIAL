@@ -4,10 +4,13 @@ clc; clear;
 syms m v K
 
 K=(1/2)*m*v^2;
-K=inline(K);
+
+Km=diff(K,m)
+Kmm=diff(Km,m)  
+
 
 %% 10.a) Verifique si cada una de las siguientes funciones es solucion de la ecuacion de Laplace Uxx + Uyy=0
-clc; clear;
+%clc; clear;
 syms u x y
 
 u= exp(-x)*cos(y) - exp(-y)*cos(x);
@@ -18,7 +21,7 @@ x= exp(s)*cos(t);
 y=exp(s)*sin(t);
 
 %% 39-b) Verifique la aproximacion lineal en (0, 0).
-clc; clear;
+%clc; clear;
 
 syms z x y
 
