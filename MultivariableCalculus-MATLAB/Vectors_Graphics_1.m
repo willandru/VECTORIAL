@@ -118,3 +118,28 @@ fplot3(t, sym(0), sym(0), [0 2])
 title(''); xlabel(''); ylabel(''); zlabel('');
 view([10, 3, 1]);
 grid off; axis off;
+
+close;close;close;close;close;close;close;
+%% GRAFICANDO SUPERFICIES
+clc; clear;
+syms x y Hemisphere with
+figure;
+fmesh(1-x^2 - y^2,[-1,1,-1,1]);
+hold on;
+fsurf(sin(6*x*y), [-1, 1, -1, 1])
+title('Interception Surfaces'); hold off;
+
+figure
+fsurf(sqrt(1-x^2 -y^2)*heaviside(1-x^2-y^2), [-1, 1, -1, 1]);
+title('Smooth Edges');view([1, 1, 1]); xlabel(''); ylabel(''); zlabel('');
+grid off; axis off; axis equal;
+
+%% SUPERFICIES PARAMÉTRICAS
+clc; clear;
+% Graficar superficies definidas por variables intermedias parametrizadas por 2
+% varibales (x,y,z)=(u^3,v^3, uv)
+syms u v
+figure
+fsurf(u^3, v^3, u*v,[-1,1,-1,1]);
+view([1, 1, 1]), title('SUPERFICIES PARAMÉTRICAS'); xlabel(''); ylabel(''); zlabel('')
+grid off; axis off;
