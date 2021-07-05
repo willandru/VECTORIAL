@@ -119,7 +119,7 @@ title(''); xlabel(''); ylabel(''); zlabel('');
 view([10, 3, 1]);
 grid off; axis off;
 
-close;close;close;close;close;close;close;
+%close;close;close;close;close;close;close;
 %% GRAFICANDO SUPERFICIES
 clc; clear;
 syms x y Hemisphere with

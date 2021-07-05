@@ -1,0 +1,43 @@
+%% Parametric Curves
+%The right circular helix of radius 1: r(t)=(cos t, sin t, t), t pertenece
+%a R.   A three-dimensional astroid: r(t)= (cos^3 t, sin^3 t, cos 2t), t
+%pertenece a 0<= t <= 2pi. The cycloid is r(t)=(t-sin t, 1-cos t) t
+%perteneec  R.
+%% HELIX 
+syms t;
+helix=[cos(t) sin(t) t];
+disp(helix);
+helx_plot= fplot3(helix(1),helix(2),helix(3), [-10*pi, 10*pi]);
+view([1 1 1]);
+%% Creamos funciones: realdot and vectorlength
+% Accordingly, the MATLAB command dot takes the complex conjugate of 
+%its first argument before multiplying corresponding entries of the vectors and sum-
+%ming. For numerical vectors with real entries, this has no effect at all. But when
+%the vectors are real-valued symbolic expressions, this has the effect of introducing
+%the command conj in ways that sometimes cause trouble. Similarly, norm when
+%applied to symbolic vectors introduces the command abs in places where we do not
+%want it. That is the reason for our defining realdot and vectorlength here to
+%replace dot and norm in the calculations in this chapter.
+
+realdot= @(x,y) x*transpose(y);
+vectorlength= @(x) sqrt(simplify(realdot(x,x)));
+
+velHelix= diff(helix, t);
+disp('Velocidad de la Helix:');
+disp(velHelix);
+speedHelix= vectorlength(velHelix);
+disp('Rapidez de la Helix:');
+disp(speedHelix);
+disp('Aceleracion de la Helix:');
+disp(acelHelix);
+acelHelix=diff(velHelix, t);
+
+%% Reparametrizando por longitud de arco S(t)
+syms s
+disp('REPARAMETRIZANDO POR LONGITUD DE CURVA:');
+arcHelix= subs(helix, t, s/sqrt(2)); %subs(s, old, new)  returns a copy of s, replacing all occurrences of old with new, and then evaluates s.
+disp('Reparametrización:');
+disp(arclHelix);
+newspeed = vectorlength(diff(arcHelix,s));
+disp('Ra:');
+disp(acelHelix);
